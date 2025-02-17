@@ -1,1 +1,12 @@
-/* TODO Add site wide styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes grow {
+    from {
+        transform: scale(0.93);
+    }
+    to {
+        transform: scale(1.0);
+    }
+}
