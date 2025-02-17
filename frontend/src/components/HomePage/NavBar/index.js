@@ -1,9 +1,8 @@
 import React from 'react';
 
 const NavBar = () => {
-
     return(
-        <div className="flex w-full h-20 font-source-sans pt-4 pl-3">
+        <div className="flex w-full h-20 font-source-sans pt-12 pl-14">
             <div className="flex w-[90%]">
                 <div className="text-3xl font-bold flex items-center justify-center text-black bg-white h-8 w-10">
                     <p>></p>

@@ -7,6 +7,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Portfolio from "./Portfolio";
 import Contact from "./Contact";
+import ScrollBar from "./ScrollBar";
 
 const sections = [Intro, About, Skills, Portfolio, Contact];
 
@@ -36,17 +37,24 @@ const HomePage = () => {
     return (
         <div className="h-screen w-screen bg-[#121212] overflow-hidden relative">
             <NavBar />
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={currentIndex}
-                    className="absolute w-full h-full"
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1, transition: { duration: 1, ease: [0.3, 1, 0.5, 1] } }}
-                    exit={{ y: "-100%", opacity: 0, transition: { duration: 0.8, ease: [0.3, 1, 0.5, 1] } }}
-                >
-                    {React.createElement(sections[currentIndex])}
-                </motion.div>
-            </AnimatePresence>
+            <div className="w-full flex">
+                <div className="w-[96%]">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentIndex}
+                            className="absolute h-full"
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1, transition: { duration: 1, ease: [0.3, 1, 0.5, 1] } }}
+                            exit={{ y: "-100%", opacity: 0, transition: { duration: 0.8, ease: [0.3, 1, 0.5, 1] } }}
+                        >
+                            {React.createElement(sections[currentIndex])}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+                <div className="w-[3%] mt-24">
+                    <ScrollBar currentIndex={currentIndex} />
+                </div>
+            </div>
         </div>
     );
 };

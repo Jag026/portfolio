@@ -1,6 +1,6 @@
 import React from 'react';
+
 import typeScriptIcon from '../../../../images/typescript-logo.png'
-import javaScriptIcon from  '../../../../images/js-icon.png';
 import reactIcon from '../../../../images/react-icon.png';
 import nodeIcon from '../../../../images/nodejs.png';
 import gitIcon from '../../../../images/git-icon.png';
@@ -50,7 +50,7 @@ const SkillListing = () => {
                 </div>
             </div>
 
-            <div className="flex mt-8">
+            <div className="flex mt-12">
                 <div className="px-8 flex flex-col items-center justify-center">
                     <img className="h-20" src={psqlIcon} />
                     <p className="pt-1 font-source-sans text-[#edf6fc]">PostgresSQL</p>
@@ -77,7 +77,7 @@ const SkillListing = () => {
                 </div>
                 <div className="px-8 flex flex-col items-center justify-center">
                     <img className="h-20" src={rockstarIcon} />
-                    <p className="pt-1 font-source-sans text-[#edf6fc]">Rock Start Employee</p>
+                    <p className="pt-1 font-source-sans text-[#edf6fc]">Rockstar Employee</p>
                 </div>
             </div>
         </div>
