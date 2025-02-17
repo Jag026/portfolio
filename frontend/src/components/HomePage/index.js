@@ -52,7 +52,7 @@ const HomePage = () => {
                     </AnimatePresence>
                 </div>
                 <div className="w-[3%] mt-24">
-                    <ScrollBar currentIndex={currentIndex} />
+                    <ScrollBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
                 </div>
             </div>
         </div>
