@@ -19,7 +19,13 @@ module.exports = {
         'amplitude': ['"amplitude"', 'sans-serif'],
         'owners-text': ['"owners-text"', 'sans-serif'],
         'scrivano': ['"scrivano"', 'serif'],
-        'source-sans': ['"source-sans-pro", sans-serif;"', 'sans-serif']
+        'source-sans': ['"source-sans-pro", sans-serif;"', 'sans-serif'],
+        'erbaum': ['erbaum', 'sans-serif'],
+        'forma': ['"forma-djr-micro"', 'sans-serif'],
+        'pirulen': ['"pirulen"', 'sans-serif'],
+        'pirulen-bold': ['"pirulen-bold"', 'sans-serif'],
+        'wausau': ['"wausau"', 'sans-serif'],
+        'studd': ['"stud"', 'sans-serif'],
       },
       boxShadow: {
         inner: 'inset 0 2px 4px 0 rgba(255, 105, 135, .3)', // Custom inner glow-like shadow
