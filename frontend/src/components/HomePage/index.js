@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './index.css';
 import Intro from "./Intro";
 import NavBar from "./NavBar";
 import About from "./About";

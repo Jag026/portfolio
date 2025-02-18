@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import developerDesk from  '../../../images/developer-desk.png';
 const Intro = () => {
 
