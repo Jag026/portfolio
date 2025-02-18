@@ -1,16 +1,27 @@
 import React from 'react';
-
+import launchVideo from '../../videos/blast-off_1.mov';
 const Contact = () => {
 
     return (
-        <div className="h-screen">
-            <div className="w-full flex items-center justify-center">
-                <div className="w-full grid grid-cols-2">
-                    <div className="col-start-1">Video here</div>
-                    <div className="col-start-2 flex flex-col justify-center items-center text-[#edf6fc]">
-                        <p>What would you do with endles possibilites?</p>
-                        <p>Drop a line and connect</p>
-                        <p>drew.griffin.dev@gmail.com</p>
+        <div className="h-screen bg-black mt-8">
+            <div className="w-full flex items-center justify-center pt-32 px-32">
+                <div className="w-full grid grid-cols-2 gap-6">
+                    <div className="col-start-1 w-full px-4">
+                        <video
+                            className="shadow-lg w-108"
+                            src={launchVideo}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                        />
+                    </div>
+                    <div className="col-start-2 text-white font-source-sans">
+                        <div className="flex flex-col text-[#edf6fc] justify-center items-start w-[400px]">
+                            <h2 className="text-5xl font-bold">Ready To Launch?</h2>
+                            <p className="py-4 text-xl">Whether you're in need of a tester, or a developer, I have the skills to get the job done right.</p>
+                            <p className="py-4 text-xl">Drop me a line: <p className="font-bold text-3xl">drew.griffin.dev@gmail.com</p></p>
+                        </div>
                     </div>
                 </div>
             </div>
