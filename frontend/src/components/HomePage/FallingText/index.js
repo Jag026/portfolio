@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from "framer-motion";
 
-const FallingText = ({ text }) => {
+const FallingText = ({ text, size = '6xl', font = 'source-sans', cursor = ''}) => {
     return (
-        <div className="flex text-6xl font-bold font-source-sans">
+        <div className={`flex text-${size} font-bold font-${font} ${cursor}`}>
             {text.split("").map((char, index) => (
                 <motion.span
                     key={index}

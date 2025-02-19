@@ -1,7 +1,7 @@
 import React from 'react';
 import coverPhoto from "../../../images/cover-photo1.png";
 
-const About = () => {
+const About = ( {setCurrentIndex}) => {
 
     return (
         <div className="h-screen w-full flex flex-col items-center mt-24 pl-4 font-source-sans text-[#edf6fc]">
@@ -21,6 +21,7 @@ const About = () => {
                         Fan of sports, reading books, and web development.</p>
                     <p className="py-4">I love building things that people find useful.</p>
                     <p>I also specialize in Wordpress development and DNS management.</p>
+                    <p onClick={() => setCurrentIndex(3)} className="hover:text-purple-400 mt-6 cursor-pointer">See all skills ></p>
                 </div>
             </div>
         </div>

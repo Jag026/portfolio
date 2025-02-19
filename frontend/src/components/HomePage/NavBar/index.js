@@ -12,8 +12,8 @@ const NavBar = ({ setCurrentIndex }) => {
                     <p className="text-white pl-1">Drew.G</p>
                 </div>
             </div>
-            <div className="text-white pr-4">
-                <button onClick={() => setCurrentIndex(4)} className="text-md font-bold border border-2 border-white w-32 h-12 rounded-md">Contact</button>
+            <div onClick={() => setCurrentIndex(4)} className="text-white pr-4 ">
+                <button className="hover:bg-purple-300 cursor-pointer text-md font-bold border border-2 border-white w-32 h-12 rounded-md">Contact</button>
             </div>
 
         </div>

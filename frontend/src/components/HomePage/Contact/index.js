@@ -21,10 +21,10 @@ const Contact = () => {
                     <div className="col-start-2 text-[#edf6fc] font-source-sans">
                         <div className="flex flex-col text-[#edf6fc] justify-center items-start w-[400px]">
                             <h2 className="text-5xl font-bold">Ready To Launch?</h2>
-                            <p className="py-4 text-xl">Whether you're in need of a tester, or a developer, I have the skills to get the job done right.</p>
+                            <p className="py-4 text-xl">Whether you're in need of a developer or a tester, I have the skills to get the job done right.</p>
                             <p className="py-4 text-xl">Drop me a line:</p>
                             <div onClick={() =>window.open('mailto:drew.griffin.dev@gmail.com', '_blank', 'noopener,noreferrer')}>
-                                <FallingText text="drew.griffin.dev@gmail.com" />
+                                <FallingText text="drew.griffin.dev@gmail.com" size="4xl" font="source-sans" cursor="cursor-pointer"/>
                             </div>
                         </div>
                     </div>
