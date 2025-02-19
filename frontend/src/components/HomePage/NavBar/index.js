@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = () => {
+const NavBar = ({ setCurrentIndex }) => {
     return(
         <div className="flex w-full h-20 font-source-sans pt-12 pl-14">
             <div className="flex w-[90%]">
@@ -13,7 +13,7 @@ const NavBar = () => {
                 </div>
             </div>
             <div className="text-white pr-4">
-                <button className="text-md font-bold border border-2 border-white w-32 h-12 rounded-md">Contact</button>
+                <button onClick={() => setCurrentIndex(4)} className="text-md font-bold border border-2 border-white w-32 h-12 rounded-md">Contact</button>
             </div>
 
         </div>

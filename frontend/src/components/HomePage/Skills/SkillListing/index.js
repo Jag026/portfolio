@@ -22,7 +22,7 @@ const SkillListing = () => {
             <div className="flex">
                 <div className="px-8 flex flex-col items-center justify-center">
                     <img className="h-20" src={typeScriptIcon} />
-                    <p className="pt-1 font-source-sans text-[#edf6fc]">JavaScript</p>
+                    <p className="pt-1 font-source-sans text-[#edf6fc]">TypeScript</p>
                 </div>
                 <div className="px-8 flex flex-col items-center justify-center">
                     <img className="h-20" src={reactIcon} />

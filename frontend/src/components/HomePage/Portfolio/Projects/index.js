@@ -7,7 +7,7 @@ const Projects = () => {
     return(
         <div className="text-[#edf6fc] border border-[#edf6fc]">
             <div className="grid grid-cols-3">
-                <div className="w-full col-start-1 col-span-1 border-r-2 flex flex-col justify-center items-center">
+                <div onClick={() => window.open('https://www.teachersaide.io', '_blank', 'noopener,noreferrer')} className="cursor-pointer w-full col-start-1 col-span-1 border-r-2 flex flex-col justify-center items-center">
                     <h2 className="font-erbaum text-3xl">TeachersAIde.io</h2>
                     <p className="font-source-sans px-8 py-4">A cutting-edge application that leverages AI to generate lesson plans and tests for teachers.</p>
                     <div className="w-full px-4">
@@ -35,7 +35,7 @@ const Projects = () => {
                         />
                     </div>
                 </div>
-                <div className="col-start-3 col-span-1 flex flex-col justify-center items-center">
+                <div onClick={() => window.open('https://www.dataropers.com', '_blank', 'noopener,noreferrer')} className="cursor-pointer col-start-3 col-span-1 flex flex-col justify-center items-center">
                     <h2 className="font-studd text-2xl pt-2">Dataropers.com</h2>
                     <p className="font-studd px-8 py-4 text-sm">A cutting-edge application that leverages AI to generate lesson plans and tests for teachers.</p>
                     <div className="w-full px-4 py-2">

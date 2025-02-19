@@ -19,13 +19,13 @@ const HomePage = () => {
 
         setIsScrolling(true);
 
-        if (event.deltaY > 18 && currentIndex < sections.length - 1) {
+        if (event.deltaY > 16 && currentIndex < sections.length - 1) {
             setCurrentIndex((prev) => prev + 1);
-        } else if (event.deltaY < -18 && currentIndex > 0) {
+        } else if (event.deltaY < -16 && currentIndex > 0) {
             setCurrentIndex((prev) => prev - 1);
         }
 
-        setTimeout(() => setIsScrolling(false), 400); // Prevent spam scrolling
+        setTimeout(() => setIsScrolling(false), 300); // Prevent spam scrolling
     }, [currentIndex, isScrolling]);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const HomePage = () => {
 
     return (
         <div className="h-screen w-screen bg-[#121212] overflow-hidden relative">
-            <NavBar />
+            <NavBar setCurrentIndex={setCurrentIndex} />
             <div className="w-full flex">
                 <div className="w-[96%]">
                     <AnimatePresence mode="wait">
@@ -46,7 +46,7 @@ const HomePage = () => {
                             animate={{ y: "0%", opacity: 1, transition: { duration: 1, ease: [0.3, 1, 0.5, 1] } }}
                             exit={{ y: "-100%", opacity: 0, transition: { duration: 0.8, ease: [0.3, 1, 0.5, 1] } }}
                         >
-                            {React.createElement(sections[currentIndex])}
+                            {React.createElement(sections[currentIndex], {setCurrentIndex} )}
                         </motion.div>
                     </AnimatePresence>
                 </div>
