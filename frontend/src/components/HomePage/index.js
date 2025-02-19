@@ -14,7 +14,7 @@ const sections = [Intro, About, Skills, Portfolio, Contact];
 const HomePage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
-    const [hideChat, setHideChat] = useState(false);
+    const [hideChat, setHideChat] = useState(true);
 
     const handleScroll = useCallback((event) => {
         if (isScrolling) return; // Prevent multiple triggers
@@ -29,6 +29,14 @@ const HomePage = () => {
 
         setTimeout(() => setIsScrolling(false), 300); // Prevent spam scrolling
     }, [currentIndex, isScrolling]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (hideChat) {
+                setHideChat(false);
+            }
+        }, 5000)
+    }, [])
 
     useEffect(() => {
         window.addEventListener("wheel", handleScroll);
