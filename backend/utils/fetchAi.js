@@ -1,11 +1,13 @@
 const { Configuration, OpenAIApi } = require("openai")
 const { api_key } = require('../config/index.js');
 const OpenAI = require("openai");
-
+const { MailtrapClient } = require("mailtrap");
+const { mailtrapToken, mailtrapEndpoint } = require('../config/index.js');
+const fs= require("fs");
+const path = require("path");
 const openai = new OpenAI({
   apiKey: api_key}
 );
-
 const resume = `
 Automation and Performance Test Engineer, Full-stack developer
 
@@ -54,6 +56,12 @@ Holland ISD, Round Rock ISD
 High school Physics and Chemistry Teacher August 2012 - May 2020
 `
 
+const about = `
+  Is a hardworking individual who loves watching sports, especially the Dallas Cowboys, although he wishes they would
+  have better seasons. His personal interests include reading books, spending time outside, programming, barbecuing, lifting weights,
+  and has a personal interest in all things business. He's the type of person that pushes himself to the limit, including activities
+  like running in 10 degree weather, taking cold plunges and swimming great distances underwater while holding his breath.
+`
 
 const fetchAi = async(message) => {
   const completion = await openai.chat.completions.create({
@@ -68,5 +76,101 @@ const fetchAi = async(message) => {
   return completion.choices[0].message;
 }
 
+const fetchAiAbout = async(message) => {
+  const completion = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {"role": "system", "content": `You are an AI assistant for a people with this about me: ${about}, your response should be in the 3rd person, the people's name is Dave, use he for pronouns`},
+      {"role": "user", "content": `Using the provided "about me", send a response to this message: ${message}`},
+    ],
+  });
 
-module.exports = { fetchAi };
+  console.log(completion.choices[0].message)
+  return completion.choices[0].message;
+}
+
+function sendResume(email) {
+  const client = new MailtrapClient({ endpoint: mailtrapEndpoint, token: mailtrapToken });
+
+  const sender = {
+    email: "raven@teachersaideacademy.com",
+    name: "Mailtrap Test",
+  };
+
+
+  const recipients = [
+    {
+      email: email,
+    }
+  ];
+
+    const pdfPath = path.join(__dirname, "Drew-Griffin-Automation-And-Performance-Test-Engineer.pdf"); // Path to the PDF file
+    const pdfData = fs.readFileSync(pdfPath); // Read the PDF file
+    const pdfBase64 = pdfData.toString("base64"); // Convert to Base64
+  client
+      .send({
+        from: sender,
+        to: recipients,
+        subject: "resume",
+        text: "New Needs Solution Form Submission",
+          attachments: [
+              {
+                  content: pdfBase64, // Base64-encoded PDF file
+                  filename: "Drew Griffin, Automation And Performance Test Engineer.pdf",
+                  type: "application/pdf",
+                  disposition: "attachment",
+              },
+          ],
+        html: `
+                <div>
+                    <div style="display: block; margin: auto; max-width: 600px;" class="main">
+                      <p>New Needs Solution Form Has Been Submitted:</p>
+                      <p>Please see attached resume.</p>
+                 </div>
+              `,
+        category: "Integration Test",
+      })
+      .then(console.log, console.error)
+      .then(() => {
+        return "success"
+      });
+
+}
+
+function sendMessage(message) {
+    const client = new MailtrapClient({ endpoint: mailtrapEndpoint, token: mailtrapToken });
+
+    const sender = {
+        email: "raven@teachersaideacademy.com",
+        name: "Mailtrap Test",
+    };
+
+
+    const recipients = [
+        {
+            email: "drew.griffin.dev@gmail.com",
+        }
+    ];
+
+    client
+        .send({
+            from: sender,
+            to: recipients,
+            subject: "New message from Portfolio Chatbot",
+            text: "New message from Portfolio Chatbot",
+            html: `
+                <div>
+                    <div style="display: block; margin: auto; max-width: 600px;" class="main">
+                      <p>Hey my man, you got this message from a recruiter:</p>
+                      <p>${message}</p>
+                 </div>
+              `,
+            category: "Integration Test",
+        })
+        .then(console.log, console.error)
+        .then(() => {
+            return "success"
+        });
+
+}
+module.exports = { fetchAi, fetchAiAbout, sendResume, sendMessage };

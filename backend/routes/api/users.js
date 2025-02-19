@@ -4,7 +4,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, makeLowercase } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { Subscription } = require('../../db/models');
-const {fetchAi} = require("../../utils/fetchAi");
+const {fetchAi, fetchAiAbout, sendResume, sendMessage} = require("../../utils/fetchAi");
 
 const router = express.Router();
 
@@ -49,36 +49,6 @@ router.post(
     }
   );
 
-  //Add Subscription
-  router.post(
-    '/create-subscription',
-    async (req, res) => {
-        const { user_id, subscription_type_id } = req.body;
-        const subscription = await Subscription.createSubscription({ user_id, subscription_type_id });
-        return res.json({
-            subscription
-        });
-    }
-  )
-
-  //Get Subscription
-  router.get(
-    '/get-subscription/:subscription_id',
-    async (req, res) => {
-        try {
-            const subscription_id = req.params.subscription_id;
-            const subscription = await Subscription.getCurrentSubscriptionById(subscription_id);
-
-            if (subscription) {
-                return res.json({ subscription })
-            } else {
-                res.status(404).send('Subscription Not Found')
-            }
-        } catch(error) {
-            console.error('Error fetching subscription', error)
-            res.status(500).send('Subscription: Server Error')
-        }
-    })
     router.post(
         '/post-ai-message',
         async (req, res) => {
@@ -92,5 +62,48 @@ router.post(
             }
         }
     )
+
+    router.post(
+        '/post-ai-about',
+        async (req, res) => {
+            const { message } = req.body;
+            console.log(message)
+            try {
+                const response = await fetchAiAbout(message);
+                res.json({response});
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    )
+
+    router.post(
+        '/send-resume',
+        async (req, res) => {
+            const { message } = req.body;
+            console.log(message)
+            try {
+                const response = await sendResume(message);
+                res.json({response});
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    )
+
+    router.post(
+        '/send-message',
+        async (req, res) => {
+            const { message } = req.body;
+            console.log(message)
+            try {
+                const response = await sendMessage(message);
+                res.json({response});
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    )
+
 
 module.exports = router;

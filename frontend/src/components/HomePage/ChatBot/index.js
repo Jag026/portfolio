@@ -11,13 +11,15 @@ const ChatBot = () => {
     const [showTopics, setShowTopics] = useState(true);
     const [topics, setTopics] = useState(["Resume & Exp. Questions", "General Info", "Send me his resume", "Send him a message"])
     const [selectedTopic, setSelectedTopic] = useState(null);
+    const [disableSendButton, setDisableSendButton] = useState(false);
 
     const updateChat = (user, message) => {
-        setChatMessages((prevItems) => [...prevItems, {user: user, message: message}])
+        setChatMessages((prevItems) => [...prevItems, {user: user, message: message}]);
     }
 
     const sendMessageToBot = async(message) => {
-
+        console.log(selectedTopic)
+        setDisableSendButton(true);
         switch (selectedTopic) {
             case 'Resume & Exp. Questions':
                 updateChat('user', message)
@@ -28,8 +30,69 @@ const ChatBot = () => {
                     }),
                 });
                 const data = await response.json();
-                updateChat('bot', data.response.content)
+                if (data) {
+                    updateChat('bot', data.response.content);
+                    setTimeout(() => {
+                        setDisableSendButton(false);
+                    }, 500)
+                }
                 return response;
+                break;
+
+            case 'General Info':
+                updateChat('user', message)
+                const resp = await csrfFetch('/api/users/post-ai-about', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        message,
+                    }),
+                });
+                const dataa = await resp.json();
+                if (dataa) {
+                    updateChat('bot', dataa.response.content);
+                    setTimeout(() => {
+                        setDisableSendButton(false);
+                    }, 500)
+                }
+                return resp;
+                break;
+
+            case 'Send me his resume':
+                updateChat('user', message)
+                updateChat('bot', 'Sending email.....');
+                const respo = await csrfFetch('/api/users/send-resume', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        message,
+                    }),
+                });
+                const dataaa = await respo.json();
+                if (dataaa) {
+                    updateChat('bot', 'Email sent');
+                    setTimeout(() => {
+                        setDisableSendButton(false);
+                    }, 500)
+                }
+                return respo;
+                break;
+
+            case 'Send him a message':
+                updateChat('user', message)
+                updateChat('bot', 'Sending message.....');
+                const respoo = await csrfFetch('/api/users/send-message', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        message,
+                    }),
+                });
+                const dataaaa = await respoo.json();
+                if (dataaaa) {
+                    updateChat('bot', 'Message Sent');
+                    setTimeout(() => {
+                        setDisableSendButton(false);
+                    }, 500)
+                }
+                return respoo;
                 break;
         }
     }
@@ -92,7 +155,7 @@ const ChatBot = () => {
                   value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
                 />
-                <p onClick={() => sendMessageToBot(userMessage)}>Send</p>
+                <p className={disableSendButton ? 'opacity-20' : ''} onClick={disableSendButton ? () => {return} : () => sendMessageToBot(userMessage)}>Send</p>
             </div>
         </div>
     )
