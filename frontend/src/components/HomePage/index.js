@@ -7,6 +7,7 @@ import Skills from "./Skills";
 import Portfolio from "./Portfolio";
 import Contact from "./Contact";
 import ScrollBar from "./ScrollBar";
+import ChatBot from "./ChatBot";
 
 const sections = [Intro, About, Skills, Portfolio, Contact];
 
@@ -52,6 +53,9 @@ const HomePage = () => {
                 </div>
                 <div className="w-[3%] mt-24">
                     <ScrollBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+                </div>
+                <div className="absolute bottom-0 right-32 z-100">
+                    <ChatBot />
                 </div>
             </div>
         </div>
