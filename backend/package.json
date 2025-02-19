@@ -27,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.9",
+    "openai": "^4.85.2",
     "per-env": "^1.0.2",
     "pg": "^8.13.3",
     "sequelize": "^6.37.5",

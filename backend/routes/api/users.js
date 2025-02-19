@@ -4,6 +4,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, makeLowercase } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { Subscription } = require('../../db/models');
+const {fetchAi} = require("../../utils/fetchAi");
 
 const router = express.Router();
 
@@ -77,7 +78,19 @@ router.post(
             console.error('Error fetching subscription', error)
             res.status(500).send('Subscription: Server Error')
         }
-    }
-  )
+    })
+    router.post(
+        '/post-ai-message',
+        async (req, res) => {
+            const { message } = req.body;
+            console.log(message)
+            try {
+                const response = await fetchAi(message);
+                res.json({response});
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    )
 
 module.exports = router;
