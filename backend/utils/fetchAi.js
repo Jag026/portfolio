@@ -67,7 +67,7 @@ const fetchAi = async(message) => {
   const completion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
-      {"role": "system", "content": `You are an AI assistant for a people with this work resume: ${resume}, your response should be in the 3rd person, the people's name is Dave, use he for pronouns`},
+      {"role": "system", "content": `You are an AI assistant for a people with this work resume: ${resume}, your response should be in the 3rd person, the people's name is Drew, use he for pronouns`},
       {"role": "user", "content": `Using the provided resume, send a response to this message: ${message}`},
     ],
   });
@@ -80,7 +80,7 @@ const fetchAiAbout = async(message) => {
   const completion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
-      {"role": "system", "content": `You are an AI assistant for a people with this about me: ${about}, your response should be in the 3rd person, the people's name is Dave, use he for pronouns`},
+      {"role": "system", "content": `You are an AI assistant for a people with this about me: ${about}, your response should be in the 3rd person, the people's name is Drew, use he for pronouns`},
       {"role": "user", "content": `Using the provided "about me", send a response to this message: ${message}`},
     ],
   });

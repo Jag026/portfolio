@@ -14,6 +14,7 @@ const sections = [Intro, About, Skills, Portfolio, Contact];
 const HomePage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isScrolling, setIsScrolling] = useState(false);
+    const [hideChat, setHideChat] = useState(false);
 
     const handleScroll = useCallback((event) => {
         if (isScrolling) return; // Prevent multiple triggers
@@ -55,7 +56,29 @@ const HomePage = () => {
                     <ScrollBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
                 </div>
                 <div className="absolute bottom-0 right-32 z-100">
-                    <ChatBot />
+                    <p
+                        className="text-[#edf6fc] hover:cursor-pointer"
+                        onClick={() => setHideChat(!hideChat)}
+                    >
+                        {hideChat ?
+                            <div className="font-source-sans animate-pulse w-[380px] h-12 bg-gray-800 mr-2 flex justify-center items-center rounded-md">
+                                <p>Chat with Drew's AI assistant</p>
+                            </div> : "Close X"}
+                    </p>
+
+                    <AnimatePresence>
+                        {!hideChat && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20, height: 0 }}
+                                animate={{ opacity: 1, y: 0, height: "auto" }}
+                                exit={{ opacity: 0, y: 20, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden"
+                            >
+                                <ChatBot />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
