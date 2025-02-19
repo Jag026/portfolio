@@ -1,24 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {csrfFetch} from "../../../store/csrf";
 
 const ChatBot = () => {
-    const [chatMessages, setChatMessages] = useState([
-        {user: 'bot',
-         message: 'What would you like to learn?'
-        }
-    ])
+    const [chatMessages, setChatMessages] = useState([])
     const [userMessage, setUserMessage] = useState("");
     const [showTopics, setShowTopics] = useState(true);
     const [topics, setTopics] = useState(["Resume & Exp. Questions", "General Info", "Send me his resume", "Send him a message"])
     const [selectedTopic, setSelectedTopic] = useState(null);
-    const [disableSendButton, setDisableSendButton] = useState(false);
+    const [disableSendButton, setDisableSendButton] = useState(true);
 
     const updateChat = (user, message) => {
         setChatMessages((prevItems) => [...prevItems, {user: user, message: message}]);
     }
 
     const sendMessageToBot = async(message) => {
-        console.log(selectedTopic)
         setDisableSendButton(true);
         switch (selectedTopic) {
             case 'Resume & Exp. Questions':
@@ -69,9 +64,6 @@ const ChatBot = () => {
                 const dataaa = await respo.json();
                 if (dataaa) {
                     updateChat('bot', 'Email sent');
-                    setTimeout(() => {
-                        setDisableSendButton(false);
-                    }, 500)
                 }
                 return respo;
                 break;
@@ -88,9 +80,6 @@ const ChatBot = () => {
                 const dataaaa = await respoo.json();
                 if (dataaaa) {
                     updateChat('bot', 'Message Sent');
-                    setTimeout(() => {
-                        setDisableSendButton(false);
-                    }, 500)
                 }
                 return respoo;
                 break;
@@ -98,21 +87,37 @@ const ChatBot = () => {
     }
 
     return (
-        <div className="w-[400px] h-[460px] bg-black border-b-0 border-2 border-white flex flex-col">
+        <div className="w-[380px] h-[460px] bg-black border-b-0 border-[1px] border-white rounded-md flex flex-col font-source-sans">
             <div className="w-full h-full p-4 overflow-auto">
-                <div className="text-[#edf6fc] bg-blue-200 rounded-xl py-2">
-                    <p>Hello, I'm Drews AI assistant, please select a topic to ask questions:</p>
-                </div>
-
+                {showTopics && <div className="flex items-center justify-center pl-1">
+                    <img className="h-10 px-2 rounded-3xl" src={require("../../../images/raven-profile-pic.png")}/>
+                    <div className="text-[#edf6fc] bg-blue-500 rounded-xl py-2">
+                        <p className="pl-4">Hello! I'm Raven, Drew's AI assistant, please select a topic to ask me
+                            questions about Drew:</p>
+                    </div>
+                </div>}
                 {showTopics &&
-                    <div>
+                    <div className="flex flex-col items-end mt-4">
                     {topics.map((topic, index) => {
                         return (
-                            <div key={index} className="flex py-2 hover:cursor-pointer" onClick={() => {
+                            <div key={index} className="flex my-2 hover:cursor-pointer text-[#edf6fc] bg-blue-500 rounded-xl" onClick={() => {
                                 setShowTopics(false);
+                                setDisableSendButton(false)
                                 setSelectedTopic(topic)
+                                switch (topic) {
+                                    case "Resume & Exp. Questions":
+                                        case "General Info":
+                                        updateChat('bot', 'What would you like to ask?');
+                                        break;
+                                    case "Send me his resume":
+                                        updateChat('bot', 'Please enter only your email and Ill send you his resume.');
+                                        break;
+                                    case "Send him a message":
+                                        updateChat('bot', 'Enter your message and Ill forward it to him. Please include your contact so he can follow up.');
+                                        break;
+                                }
                             }}>
-                                <div className="w-48 bg-blue-200">
+                                <div className="w-48 flex justify-center items-center">
                                     <p>{topic}</p>
                                 </div>
                             </div>
@@ -121,13 +126,10 @@ const ChatBot = () => {
                 </div>}
 
                 {!showTopics && <div>
-                    <p className="text-[#edf6fc]" onClick={() => {
-                        setShowTopics(true)
-                        setChatMessages([
-                            {user: 'bot',
-                                message: 'What would you like to learn?'
-                            }
-                        ])
+                    <p className="text-[#edf6fc] hover:cursor-pointer" onClick={() => {
+                        setShowTopics(true);
+                        setDisableSendButton(true)
+                        setChatMessages([]);
                     }}>Back</p>
                     <div
                         className="text-[#edf6fc]rounded-xl p-2">
@@ -135,12 +137,13 @@ const ChatBot = () => {
                         {chatMessages.map((message, index) => {
                             return (
                                 <div key={index}>
-                                    <div className="flex">
-                                        {message.user === 'bot' && <img className="rounded-2xl h-[25px] w-[25px]"
-                                                                        src={require("../../../images/react-icon.png")}/>}
-                                        <div
-                                            className={message.user === 'bot' ? "text-[#edf6fc] bg-blue-200 rounded-xl p-2" : "bg-green-200 rounded-xl p-2"}>
-                                            <p>{message.message}</p>
+                                    <div className="flex my-4">
+                                        {message.user === 'bot' && <img className="h-10 px-2 rounded-3xl" src={require("../../../images/raven-profile-pic.png")}/>}
+                                        <div className="w-full flex">
+                                            <div
+                                                className={message.user === 'bot' ? "text-[#edf6fc] bg-blue-500 rounded-xl p-2" : "text-[#edf6fc] bg-green-500 rounded-xl p-2"}>
+                                                <p>{message.message}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -149,13 +152,19 @@ const ChatBot = () => {
                     </div>
                 </div>}
             </div>
-            <div className="bg-gray-200 w-full h-24 py-2">
+            <div className="bg-gray-200 w-full h-20 py-2 pl-4 flex items-center justify-center">
                 <input
-                  type="text"
+                  type="textarea"
                   value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
+                  className="w-full h-10 p-2 rounded-md"
                 />
-                <p className={disableSendButton ? 'opacity-20' : ''} onClick={disableSendButton ? () => {return} : () => sendMessageToBot(userMessage)}>Send</p>
+                <div className={disableSendButton ? 'opacity-20 px-2' : 'hover:cursor-pointer px-2'} onClick={disableSendButton ? () => {return} : () => {
+                    sendMessageToBot(userMessage);
+                    setUserMessage("");
+                }}>
+                    <img className="w-8 h-6" src={require("../../../images/send-icon.png")} />
+                </div>
             </div>
         </div>
     )
