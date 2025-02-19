@@ -28,7 +28,6 @@ const ChatBot = () => {
                     }),
                 });
                 const data = await response.json();
-                console.log(data.response.content)
                 updateChat('bot', data.response.content)
                 return response;
                 break;
