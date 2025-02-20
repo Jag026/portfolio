@@ -93,7 +93,7 @@ const fetchAiAbout = async(message) => {
   return completion.choices[0].message;
 }
 
-function sendResume(email) {
+function sendResume(name, email) {
   const client = new MailtrapClient({ endpoint: mailtrapEndpoint, token: mailtrapToken });
 
   const sender = {
@@ -115,8 +115,8 @@ function sendResume(email) {
       .send({
         from: sender,
         to: recipients,
-        subject: "resume",
-        text: "New Needs Solution Form Submission",
+        subject: "Requested Resume",
+        text: "Requested Resume",
           attachments: [
               {
                   content: pdfBase64, // Base64-encoded PDF file
@@ -128,8 +128,10 @@ function sendResume(email) {
         html: `
                 <div>
                     <div style="display: block; margin: auto; max-width: 600px;" class="main">
-                      <p>New Needs Solution Form Has Been Submitted:</p>
-                      <p>Please see attached resume.</p>
+                      <p>Hey ${name},</p>
+                      <p>Please see Drew's attached resume.</p>
+                      <p>Thanks,</p>
+                      <p>Raven</p>
                  </div>
               `,
         category: "Integration Test",
@@ -141,7 +143,7 @@ function sendResume(email) {
 
 }
 
-function sendMessage(message) {
+function sendMessage(name, email, message) {
     const client = new MailtrapClient({ endpoint: mailtrapEndpoint, token: mailtrapToken });
 
     const sender = {
@@ -152,7 +154,7 @@ function sendMessage(message) {
 
     const recipients = [
         {
-            email: "drew.griffin.dev@gmail.com",
+            email: email,
         }
     ];
 
@@ -166,6 +168,8 @@ function sendMessage(message) {
                 <div>
                     <div style="display: block; margin: auto; max-width: 600px;" class="main">
                       <p>Hey my man, you got this message from a recruiter:</p>
+                      <p>${name}</p>
+                      <p>${email}</p>
                       <p>${message}</p>
                  </div>
               `,

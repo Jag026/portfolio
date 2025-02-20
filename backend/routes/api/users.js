@@ -80,10 +80,9 @@ router.post(
     router.post(
         '/send-resume',
         async (req, res) => {
-            const { message } = req.body;
-            console.log(message)
+            const { name, email } = req.body;
             try {
-                const response = await sendResume(message);
+                const response = await sendResume(name, email);
                 res.json({response});
             } catch (error) {
                 console.log(error)
@@ -94,10 +93,10 @@ router.post(
     router.post(
         '/send-message',
         async (req, res) => {
-            const { message } = req.body;
+            const { name, email, message } = req.body;
             console.log(message)
             try {
-                const response = await sendMessage(message);
+                const response = await sendMessage(name, email, message);
                 res.json({response});
             } catch (error) {
                 console.log(error)

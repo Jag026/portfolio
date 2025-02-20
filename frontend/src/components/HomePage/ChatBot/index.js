@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {csrfFetch} from "../../../store/csrf";
+import ContactForm from "./ContactForm";
 
 const ChatBot = () => {
     const [chatMessages, setChatMessages] = useState([])
@@ -8,7 +9,7 @@ const ChatBot = () => {
     const [topics, setTopics] = useState(["Resume & Exp. Questions", "Hobbies & Interests", "Send me his resume", "Send him a message"])
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [disableSendButton, setDisableSendButton] = useState(true);
-
+    const [showEmailForm, setShowEmailForm] = useState(false);
     const updateChat = (user, message) => {
         setChatMessages((prevItems) => [...prevItems, {user: user, message: message}]);
     }
@@ -50,22 +51,6 @@ const ChatBot = () => {
                     }, 500)
                 }
                 return resp;
-                break;
-
-            case 'Send me his resume':
-                updateChat('user', message)
-                updateChat('bot', 'Sending email.....');
-                const respo = await csrfFetch('/api/users/send-resume', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        message,
-                    }),
-                });
-                const dataaa = await respo.json();
-                if (dataaa) {
-                    updateChat('bot', 'Email sent');
-                }
-                return respo;
                 break;
 
             case 'Send him a message':
@@ -112,10 +97,12 @@ const ChatBot = () => {
                                         updateChat('bot', 'Ask me questions about Drew\'s hobbies and interests.');
                                         break;
                                     case "Send me his resume":
-                                        updateChat('bot', 'Please enter only your email and I\'ll send you his resume.');
+                                        updateChat('bot', 'Complete the form I\'ll send you his resume.');
+                                        setShowEmailForm(true);
                                         break;
                                     case "Send him a message":
                                         updateChat('bot', 'Write Drew a message and I\'ll forward it to him. Please include your contact so he can follow up.');
+                                        setShowEmailForm(true);
                                         break;
                                 }
                             }}>
@@ -151,6 +138,9 @@ const ChatBot = () => {
                                 </div>
                             )
                         })}
+                        {
+                            showEmailForm && <ContactForm updateChat={updateChat} formType={selectedTopic} />
+                        }
                     </div>
                 </div>}
             </div>
