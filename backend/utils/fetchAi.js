@@ -13,6 +13,11 @@ Automation and Performance Test Engineer, Full-stack developer
 
 Golf Nations  July 2023 - Current
 
+Played a pivotal role in enhancing user experience and system performance by implementing critical bug fixes across the application’s UI, API, and server layers, significantly improving stability and customer satisfaction.
+Took ownership of development projects and maintenance of the production application, showcasing expertise in both front-end and back-end technologies, including PHP, Propel, MySQL for the backend/API; Angular (TypeScript) and PHP for the front-end; with deployment on NGINX servers hosted on AWS, and content management through WordPress.
+Led the integration of DataDog monitoring tools, enabling real-time tracking of system performance and swiftly identifying and addressing potential issues, which resulted in a marked reduction in downtime and improved reliability.
+Drove the development and launch of new features for the application, encompassing both backend/API enhancements and front-end updates, thereby expanding the app’s functionality and improving user engagement.
+Responded adeptly to tier 2 and tier 3 customer support queries, diagnosing and resolving complex bugs, which enhanced customer trust and retention by ensuring a seamless user experience.
 Spearheaded the implementation of comprehensive testing strategies, including functional, regression, and performance testing, to enhance application stability and user experience.
 Managed and tracked testing tasks, bug reports, and feature requests using Jira, ensuring efficient workflow organization, prioritization, and resolution of issues within agile development cycles.
 Designed and maintained an extensive automated regression test suite using TestCafe, ensuring consistent validation of new features and preventing regressions in existing functionality.
@@ -58,9 +63,8 @@ High school Physics and Chemistry Teacher August 2012 - May 2020
 
 const about = `
   Is a hardworking individual who loves watching sports, especially the Dallas Cowboys, although he wishes they would
-  have better seasons. His personal interests include reading books, spending time outside, programming, barbecuing, lifting weights,
-  and has a personal interest in all things business. He's the type of person that pushes himself to the limit, including activities
-  like running in 10 degree weather, taking cold plunges and swimming great distances underwater while holding his breath.
+  have better seasons. His personal interests include reading books, spending time outside, programming, barbecuing. His favorite topics include
+  science, economics, and history.
 `
 
 const fetchAi = async(message) => {

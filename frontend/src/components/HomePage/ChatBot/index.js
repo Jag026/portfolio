@@ -5,7 +5,7 @@ const ChatBot = () => {
     const [chatMessages, setChatMessages] = useState([])
     const [userMessage, setUserMessage] = useState("");
     const [showTopics, setShowTopics] = useState(true);
-    const [topics, setTopics] = useState(["Resume & Exp. Questions", "General Info", "Send me his resume", "Send him a message"])
+    const [topics, setTopics] = useState(["Resume & Exp. Questions", "Hobbies & Interests", "Send me his resume", "Send him a message"])
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [disableSendButton, setDisableSendButton] = useState(true);
 
@@ -34,7 +34,7 @@ const ChatBot = () => {
                 return response;
                 break;
 
-            case 'General Info':
+            case 'Hobbies & Interests':
                 updateChat('user', message)
                 const resp = await csrfFetch('/api/users/post-ai-about', {
                     method: 'POST',
@@ -100,20 +100,22 @@ const ChatBot = () => {
                     <div className="flex flex-col items-end mt-4">
                     {topics.map((topic, index) => {
                         return (
-                            <div key={index} className="flex my-2 hover:cursor-pointer text-[#edf6fc] bg-blue-500 rounded-xl" onClick={() => {
+                            <div key={index} className="flex my-2 h-12 hover:cursor-pointer transition-colors hover:bg-green-500 delay-50 text-[#edf6fc] bg-blue-500 rounded-xl" onClick={() => {
                                 setShowTopics(false);
                                 setDisableSendButton(false)
                                 setSelectedTopic(topic)
                                 switch (topic) {
                                     case "Resume & Exp. Questions":
-                                        case "General Info":
-                                        updateChat('bot', 'What would you like to ask?');
+                                        updateChat('bot', 'Ask me questions about Drew\'s background and experience.');
+                                        break;
+                                    case "Hobbies & Interests":
+                                        updateChat('bot', 'Ask me questions about Drew\'s hobbies and interests.');
                                         break;
                                     case "Send me his resume":
-                                        updateChat('bot', 'Please enter only your email and Ill send you his resume.');
+                                        updateChat('bot', 'Please enter only your email and I\'ll send you his resume.');
                                         break;
                                     case "Send him a message":
-                                        updateChat('bot', 'Enter your message and Ill forward it to him. Please include your contact so he can follow up.');
+                                        updateChat('bot', 'Write Drew a message and I\'ll forward it to him. Please include your contact so he can follow up.');
                                         break;
                                 }
                             }}>
@@ -152,10 +154,11 @@ const ChatBot = () => {
                     </div>
                 </div>}
             </div>
-            <div className="bg-gray-200 w-full h-20 py-2 pl-4 flex items-center justify-center">
+            <div className="bg-gray-200 w-full h-20 py-2 pl-4 px-2 flex items-center justify-center">
                 <input
                   type="textarea"
                   value={userMessage}
+                  placeholder="Type your question here"
                   onChange={(e) => setUserMessage(e.target.value)}
                   className="w-full h-10 p-2 rounded-md"
                 />
