@@ -92,4 +92,27 @@ router.delete(
     }
   });
 
+    router.post('/verify-turnstile', async (req, res) => {
+        const token = req.body.token; // The token from the client-side Turnstile widget
+        const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                secret: turnstile_key,
+                response: token,
+            }),
+        });
+        const data = await response.json();
+        console.log(["API:", data.success])
+        if (data.success) {
+            // The token is valid, proceed with form submission handling
+            res.json({ success: true });
+        } else {
+            // The token is invalid or verification failed
+            res.status(400).json({ success: false, message: "Captcha verification failed" });
+        }
+    });
+
 module.exports = router;

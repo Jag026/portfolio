@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {csrfFetch} from "../../../../store/csrf";
 import {motion, AnimatePresence} from "framer-motion";
-
+import TurnstileWidget from "../../Turnstile";
 
 //bring in the current api call to the new form, need to pass in form type props
 const ContactForm = ({ updateChat, formType }) => {
@@ -9,6 +9,8 @@ const ContactForm = ({ updateChat, formType }) => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [hideForm, setHideForm] = useState(false);
+    const [isValidated, setIsValidated] = useState(false);
+
     const sendForm = async(e) => {
         e.preventDefault();
         switch(formType) {
@@ -86,8 +88,16 @@ const ContactForm = ({ updateChat, formType }) => {
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
                             )}
-                            <div className="w-full flex justify-end mb-4 pb-4 pt-2">
-                                <button className="bg-blue-500 w-24 h-10 rounded-md">Submit</button>
+                            <div className="w-full flex flex-col mb-4 pb-4 pt-2">
+                                <div className="w-full">
+                                    <TurnstileWidget setIsValidated={setIsValidated} />
+                                </div>
+                                {
+                                    isValidated &&
+                                    <div className="flex justify-end">
+                                        <button className="disabled bg-blue-500 w-24 h-10 rounded-md">Submit</button>
+                                    </div>
+                                }
                             </div>
                         </form>
                     </motion.div>
