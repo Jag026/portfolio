@@ -154,7 +154,7 @@ function sendMessage(name, email, message) {
 
     const recipients = [
         {
-            email: email,
+            email: 'drew.griffin.dev@gmail.com',
         }
     ];
 
