@@ -14,7 +14,13 @@ const ChatBot = () => {
         setChatMessages((prevItems) => [...prevItems, {user: user, message: message}]);
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && !disableSendButton) {
+            sendMessageToBot(userMessage);
+        }
+    }
     const sendMessageToBot = async(message) => {
+        setUserMessage("");
         setDisableSendButton(true);
         switch (selectedTopic) {
             case 'Resume & Exp. Questions':
@@ -30,7 +36,7 @@ const ChatBot = () => {
                     updateChat('bot', data.response.content);
                     setTimeout(() => {
                         setDisableSendButton(false);
-                    }, 500)
+                    }, 7500)
                 }
                 return response;
                 break;
@@ -48,7 +54,7 @@ const ChatBot = () => {
                     updateChat('bot', dataa.response.content);
                     setTimeout(() => {
                         setDisableSendButton(false);
-                    }, 500)
+                    }, 7500)
                 }
                 return resp;
                 break;
@@ -77,8 +83,7 @@ const ChatBot = () => {
                 {showTopics && <div className="flex items-center justify-center pl-1">
                     <img className="h-10 px-2 rounded-3xl" src={require("../../../images/raven-profile-pic.png")}/>
                     <div className="text-[#edf6fc] bg-blue-500 rounded-xl py-2">
-                        <p className="pl-4">Hello! I'm Raven, Drew's AI assistant, please select a topic to ask me
-                            questions about Drew:</p>
+                        <p className="pl-4">Hi! I'm Raven, Drew's AI assistant, powered by React and OpenAI. Choose a topic to ask me about Drew!</p>
                     </div>
                 </div>}
                 {showTopics &&
@@ -151,10 +156,10 @@ const ChatBot = () => {
                   placeholder="Type your question here"
                   onChange={(e) => setUserMessage(e.target.value)}
                   className="w-full h-10 p-2 rounded-md"
+                  onKeyDown={handleKeyDown}
                 />
                 <div className={disableSendButton ? 'opacity-20 px-2' : 'hover:cursor-pointer px-2'} onClick={disableSendButton ? () => {return} : () => {
                     sendMessageToBot(userMessage);
-                    setUserMessage("");
                 }}>
                     <img className="w-8 h-6" src={require("../../../images/send-icon.png")} />
                 </div>
