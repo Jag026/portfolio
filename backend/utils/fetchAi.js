@@ -128,7 +128,7 @@ function sendResume(name, email) {
           ],
         html: `
                 <div>
-                    <div style="display: block; margin: auto; max-width: 600px;" class="main">
+                    <div style="display: block; max-width: 600px;" class="main">
                       <p>Hey ${name},</p>
                       <p>Please see Drew's attached resume.</p>
                       <p>Thanks,</p>
