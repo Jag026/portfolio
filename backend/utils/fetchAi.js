@@ -109,7 +109,7 @@ function sendResume(name, email) {
     }
   ];
 
-    const pdfPath = path.join(__dirname, "Drew-Griffin-Automation-And-Performance-Test-Engineer.pdf"); // Path to the PDF file
+    const pdfPath = path.join(__dirname, "Drew Griffin, Automation Test Engineer, Fullstack Developer.pdf"); // Path to the PDF file
     const pdfData = fs.readFileSync(pdfPath); // Read the PDF file
     const pdfBase64 = pdfData.toString("base64"); // Convert to Base64
   client
