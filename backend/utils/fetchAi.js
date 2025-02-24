@@ -121,7 +121,7 @@ function sendResume(name, email) {
           attachments: [
               {
                   content: pdfBase64, // Base64-encoded PDF file
-                  filename: "Drew Griffin, Automation And Performance Test Engineer.pdf",
+                  filename: "Drew Griffin, Automation Test Engineer, Fullstack Developer.pdf",
                   type: "application/pdf",
                   disposition: "attachment",
               },
