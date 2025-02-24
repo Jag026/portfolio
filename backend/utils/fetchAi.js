@@ -99,7 +99,7 @@ function sendResume(name, email) {
 
   const sender = {
     email: "raven@teachersaideacademy.com",
-    name: "Mailtrap Test",
+    name: "Raven",
   };
 
 
@@ -135,7 +135,7 @@ function sendResume(name, email) {
                       <p>Raven</p>
                  </div>
               `,
-        category: "Integration Test",
+        category: "Resume",
       })
       .then(console.log, console.error)
       .then(() => {
@@ -149,7 +149,7 @@ function sendMessage(name, email, message) {
 
     const sender = {
         email: "raven@teachersaideacademy.com",
-        name: "Mailtrap Test",
+        name: "Raven",
     };
 
 
@@ -174,7 +174,7 @@ function sendMessage(name, email, message) {
                       <p>${message}</p>
                  </div>
               `,
-            category: "Integration Test",
+            category: "Resume",
         })
         .then(console.log, console.error)
         .then(() => {
