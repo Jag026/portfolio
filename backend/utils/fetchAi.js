@@ -10,56 +10,38 @@ const openai = new OpenAI({
 );
 const resume = `
 
-Automation Test Engineer, Full-stack Developer
-Golf Nations July 2023 - Current
-Played a pivotal role in enhancing user experience and system performance by implementing critical bug fixes
-across the application’s UI, API, and server layers, significantly improving stability and customer satisfaction.
-Took ownership of development projects and maintenance of the production application, showcasing expertise
-in both front-end and back-end technologies, including PHP , Propel, MySQL for the backend/API; Angular
-(TypeScript) and PHP for the front-end; with deployment on NGINX servers hosted on AWS.
-Led the integration of DataDog monitoring tools, enabling real-time tracking of system performance and swiftly
-identifying and addressing potential issues, which resulted in a marked reduction in downtime and improved
-reliability.
-Drove the development and launch of new features for the application, encompassing both backend/API
-enhancements and front-end updates, thereby expanding the app’s functionality and improving user
-engagement.
-Responded adeptly to tier 2 and tier 3 customer support queries, diagnosing and resolving complex bugs, which
-enhanced customer trust and retention by ensuring a seamless user experience.
-Designed and implemented a comprehensive regression test suite using TestCafe, facilitating the automation of
-testing processes. This initiative significantly improved release efficiency and ensured high-quality deployments
-by rigorously validating new features and updates against existing functionalities.
-Demonstrated exceptional problem-solving skills and a keen eye for detail in identifying and rectifying errors,
-contributing to the contin
+Full-stack Developer, Test Automation Engineer
+Golf Nations (current role)
+Drove the development and launch of new features for the application, encompassing both backend/API enhancements and front-end updates, thereby expanding the app’s functionality and improving user engagement.
+Played a pivotal role in enhancing user experience and system performance by implementing critical bug fixes across the application’s UI, API, and server layers, significantly improving stability and customer satisfaction.
+Took ownership of development projects and maintenance of the production application, showcasing expertise in both front-end and back-end technologies, including PHP, Propel, MySQL for the backend/API; Angular (TypeScript) and PHP for the front-end; with deployment on NGINX servers hosted on AWS.
+Led the integration of DataDog monitoring tools, enabling real-time tracking of system performance and swiftly identifying and addressing potential issues, which resulted in a marked reduction in downtime and improved reliability.
+Responded adeptly to tier 2 and tier 3 customer support queries, diagnosing and resolving complex bugs, which enhanced customer trust and retention by ensuring a seamless user experience.
+Designed and implemented a comprehensive regression test suite using TestCafe, facilitating the automation of testing processes. This initiative significantly improved release efficiency and ensured high-quality deployments by rigorously validating new features and updates against existing functionalities.
+Demonstrated exceptional problem-solving skills and a keen eye for detail in identifying and rectifying errors, contributing to the continuous improvement of the application and supporting the achievement of strategic business objectives.
 
 Technical Support and Automation Manager
-App Academy Nov 2020 - July 2023
-Designed and implemented the company’s CRM infrastructure, setting up Outreach.io and integrating it
-seamlessly with Salesforce to streamline sales and customer management.
-Developed and optimized email marketing automations and campaigns, enabling personalized outreach and
-follow-ups based on customer behavior and application data.
-Created a dynamic frontend sales dashboard, enhancing productivity and providing real-time insights that
-boosted sales associates’ efficiency.
-Built custom automation workflows tailored to different customer segments, leveraging application data to
-enhance engagement and improve conversion rates.
-Provided expert technical support through help desk software, phone calls, and screen shares, ensuring
-customers received prompt and effective solutions.
-Authored and maintained comprehensive internal and customer-facing documentation, improving onboarding,
-troubleshooting efficiency, and internal knowledge sharing.
-Utilized advanced MSSQL queries to analyze company data, uncover insights, and drive strategic
-decision-making.
-Automated key sales and support processes, reducing manual workload and increasing team efficiency through
-workflow optimizations.
+App Academy
+Designed and implemented the company’s CRM infrastructure, setting up Outreach.io and integrating it seamlessly with Salesforce to streamline sales and customer management.
+Developed and optimized email marketing automations and campaigns, enabling personalized outreach and follow-ups based on customer behavior and application data.
+Created a dynamic frontend sales dashboard, enhancing productivity and providing real-time insights that boosted sales associates’ efficiency.
+Built custom automation workflows tailored to different customer segments, leveraging application data to enhance engagement and improve conversion rates.
+Provided expert technical support through help desk software, phone calls, and screen shares, ensuring customers received prompt and effective solutions.
+Authored and maintained comprehensive internal and customer-facing documentation, improving onboarding, troubleshooting efficiency, and internal knowledge sharing.
+Utilized advanced MSSQL queries to analyze company data, uncover insights, and drive strategic decision-making.
+Automated key sales and support processes, reducing manual workload and increasing team efficiency through workflow optimizations.
+
 
 Web Developer
-Crusayder United June 2019 - Oct 2020
+Crusayder United
 Developed and maintained WordPress websites, implementing custom themes and plugins to meet client needs.
 Utilized HTML, JavaScript, and jQuery to enhance site interactivity and user experience.
 Managed website updates, including WordPress core, plugins, and themes, ensuring security and stability.
-Troubleshot and resolved front-end and back-end issues, optimizing site performa
-
+Troubleshot and resolved front-end and back-end issues, optimizing site performance.
+Assisted clients with feature requests, bug fixes, and general site maintenance.
 
 Holland ISD, Round Rock ISD
-High school Physics and Chemistry Teacher August 2012 - May 2020
+High school Physics and Chemistry Teacher
 `
 
 const about = `
