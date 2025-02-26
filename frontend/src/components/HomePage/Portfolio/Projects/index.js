@@ -7,8 +7,8 @@ const Projects = () => {
     return(
         <div className="text-[#edf6fc] border border-[#edf6fc]">
             <div className="grid grid-cols-3">
-                <div onClick={() => window.open('https://www.teachersaide.io', '_blank', 'noopener,noreferrer')} className="cursor-pointer w-full col-start-1 col-span-1 border-r-2 flex flex-col justify-center items-center">
-                    <h2 className="font-erbaum text-3xl">TeachersAIde.io</h2>
+                <div onClick={() => window.open('https://ai-workbooks.com/', '_blank', 'noopener,noreferrer')} className="cursor-pointer w-full col-start-1 col-span-1 border-r-2 flex flex-col justify-center items-center">
+                    <h2 className="font-erbaum text-2xl">AI-Workbooks.com</h2>
                     <p className="font-source-sans px-8 py-4">A cutting-edge application that leverages AI to generate lesson plans and tests for teachers.</p>
                     <div className="w-full px-4">
                         <video
