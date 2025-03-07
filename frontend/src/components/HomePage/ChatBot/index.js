@@ -97,9 +97,11 @@ const ChatBot = () => {
                                 switch (topic) {
                                     case "Resume & Exp. Questions":
                                         updateChat('bot', 'Ask me questions about Drew\'s background and experience.');
+                                        setShowEmailForm(false);
                                         break;
                                     case "Hobbies & Interests":
                                         updateChat('bot', 'Ask me questions about Drew\'s hobbies and interests.');
+                                        setShowEmailForm(false);
                                         break;
                                     case "Send me his resume":
                                         updateChat('bot', 'Complete the form I\'ll send you his resume.');
