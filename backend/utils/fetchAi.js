@@ -91,7 +91,7 @@ function sendResume(name, email) {
     }
   ];
 
-    const pdfPath = path.join(__dirname, "Drew Griffin, Fullstack Developer.pdf"); // Path to the PDF file
+    const pdfPath = path.join(__dirname, "Drew Griffin - Full Stack Developer.pdf"); // Path to the PDF file
     const pdfData = fs.readFileSync(pdfPath); // Read the PDF file
     const pdfBase64 = pdfData.toString("base64"); // Convert to Base64
   client
@@ -103,7 +103,7 @@ function sendResume(name, email) {
           attachments: [
               {
                   content: pdfBase64, // Base64-encoded PDF file
-                  filename: "Drew Griffin, Fullstack Developer.pdf",
+                  filename: "Drew Griffin - Full Stack Developer.pdf",
                   type: "application/pdf",
                   disposition: "attachment",
               },
