@@ -10,38 +10,37 @@ const openai = new OpenAI({
 );
 const resume = `
 
-Full-stack Developer, Test Automation Engineer
-Golf Nations (current role)
-Drove the development and launch of new features for the application, encompassing both backend/API enhancements and front-end updates, thereby expanding the app’s functionality and improving user engagement.
-Played a pivotal role in enhancing user experience and system performance by implementing critical bug fixes across the application’s UI, API, and server layers, significantly improving stability and customer satisfaction.
-Took ownership of development projects and maintenance of the production application, showcasing expertise in both front-end and back-end technologies, including PHP, Propel, MySQL for the backend/API; Angular (TypeScript) and PHP for the front-end; with deployment on NGINX servers hosted on AWS.
-Led the integration of DataDog monitoring tools, enabling real-time tracking of system performance and swiftly identifying and addressing potential issues, which resulted in a marked reduction in downtime and improved reliability.
-Responded adeptly to tier 2 and tier 3 customer support queries, diagnosing and resolving complex bugs, which enhanced customer trust and retention by ensuring a seamless user experience.
-Designed and implemented a comprehensive regression test suite using TestCafe, facilitating the automation of testing processes. This initiative significantly improved release efficiency and ensured high-quality deployments by rigorously validating new features and updates against existing functionalities.
-Demonstrated exceptional problem-solving skills and a keen eye for detail in identifying and rectifying errors, contributing to the continuous improvement of the application and supporting the achievement of strategic business objectives.
+Software Support Engineer, WordPress Developer
+Golf Nations, Remote, US
+July 2023 - Present
+Administered and enhanced a WordPress multisite network, supporting 15 U.S. Golf Associations by delivering seamless functionality, boosting site uptime by 25%, and optimizing performance across all sites.  
+Designed and coded custom WordPress pages, plugins, and features, tailoring solutions to client specifications, increasing user engagement by 15%, and improving site usability.  
+Configured and optimized DNS settings via Cloudflare, strengthening security protocols, accelerating load times by 20%, and ensuring reliable domain performance.  
+Updated and secured WordPress core, plugins, and themes across 15 sites, reducing vulnerabilities by 30% and maintaining compatibility with the latest standards.  
+Integrated and maintained an Angular application within the WordPress ecosystem, developing reusable Angular components that enhanced functionality and improved front-end performance by 10%.  
+Implemented jQuery solutions to create dynamic front-end interactions, streamlining user workflows and enhancing interactivity across the WordPress platform.  
+Built and maintained API integrations, modifying the WordPress REST API and a Propel-based API, ensuring 99% data accuracy and enabling seamless interoperability between systems.  
+Responded to customer requests by developing new features, fixing bugs, and onboarding 5+ new clients, achieving a 95% satisfaction rate and driving platform improvements. 
 
-Technical Support and Automation Manager
-App Academy
-Designed and implemented the company’s CRM infrastructure, setting up Outreach.io and integrating it seamlessly with Salesforce to streamline sales and customer management.
-Developed and optimized email marketing automations and campaigns, enabling personalized outreach and follow-ups based on customer behavior and application data.
-Created a dynamic frontend sales dashboard, enhancing productivity and providing real-time insights that boosted sales associates’ efficiency.
-Built custom automation workflows tailored to different customer segments, leveraging application data to enhance engagement and improve conversion rates.
-Provided expert technical support through help desk software, phone calls, and screen shares, ensuring customers received prompt and effective solutions.
-Authored and maintained comprehensive internal and customer-facing documentation, improving onboarding, troubleshooting efficiency, and internal knowledge sharing.
-Utilized advanced MSSQL queries to analyze company data, uncover insights, and drive strategic decision-making.
-Automated key sales and support processes, reducing manual workload and increasing team efficiency through workflow optimizations.
+Technical Support Engineer
+App Academy, Remote, US
+May 2020 - July 2023
+Provided technical support via Zendesk, phone, and helpdesk, resolving 40+ weekly tickets with clear, user-focused solutions.
+Built custom Salesforce dashboards for the sales team, boosting productivity by 35%.  
+Maintained Outreach.io CRM with Salesforce integration, streamlining workflows for 200+ accounts.  
+Created Zendesk automations to triage and route tickets, slashing response times by 20% and enhancing customer support efficiency.  
+Wrote 50+ internal and customer-facing documents, reducing onboarding time by 25%.  
+Analyzed MSSQL data for actionable insights, supporting C-level decisions.  
+Designed email marketing automations for 20,000+ leads, increasing conversions by 15%.  
+Developed automation workflows, cutting manual tasks by 30%.  
+High School Chemistry Teacher
+Holland ISD, Holland, TX
+August 2012 - May 2020
 
+Taught 6 sections of chemistry to 150+ students annually.
+Developed and implemented yearly science curriculum.
+Fostered a classroom environment for high-level learning.
 
-Web Developer
-Crusayder United
-Developed and maintained WordPress websites, implementing custom themes and plugins to meet client needs.
-Utilized HTML, JavaScript, and jQuery to enhance site interactivity and user experience.
-Managed website updates, including WordPress core, plugins, and themes, ensuring security and stability.
-Troubleshot and resolved front-end and back-end issues, optimizing site performance.
-Assisted clients with feature requests, bug fixes, and general site maintenance.
-
-Holland ISD, Round Rock ISD
-High school Physics and Chemistry Teacher
 `
 
 const about = `
@@ -91,7 +90,7 @@ function sendResume(name, email) {
     }
   ];
 
-    const pdfPath = path.join(__dirname, "Drew Griffin - Full Stack Developer.pdf"); // Path to the PDF file
+    const pdfPath = path.join(__dirname, "Drew-Griffin-Resume-Wordpress-Developer.pdf"); // Path to the PDF file
     const pdfData = fs.readFileSync(pdfPath); // Read the PDF file
     const pdfBase64 = pdfData.toString("base64"); // Convert to Base64
   client
@@ -103,7 +102,7 @@ function sendResume(name, email) {
           attachments: [
               {
                   content: pdfBase64, // Base64-encoded PDF file
-                  filename: "Drew Griffin - Full Stack Developer.pdf",
+                  filename: "Drew-Griffin-Resume-Wordpress-Developer.pdf",
                   type: "application/pdf",
                   disposition: "attachment",
               },
