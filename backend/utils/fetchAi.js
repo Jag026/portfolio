@@ -10,18 +10,23 @@ const openai = new OpenAI({
 );
 const resume = `
 
-Software Support Engineer, WordPress Developer
+Objective
+Dynamic Software Support Engineer with over 5 years of experience in technical support, application troubleshooting, and system optimization. Seeking a software or technical support role to deliver solutions using TypeScript, Node.js, React, Angular, MySQL, PostgreSQL, MSSQL, AWS, and DataDog. Skilled in automating workflows with TestCafe, enhancing CRM systems via Zendesk, Outreach.io, and Salesforce, and maintaining 99.9% uptime while resolving 50+ tickets monthly. Ready to apply programming, analytical, and communication skills to drive performance in a collaborative team.
+
+Professional Experience
+
+Software Support Engineer
 Golf Nations, Remote, US
 July 2023 - Present
-Administered and enhanced a WordPress multisite network, supporting 15 U.S. Golf Associations by delivering seamless functionality, boosting site uptime by 25%, and optimizing performance across all sites.  
-Designed and coded custom WordPress pages, plugins, and features, tailoring solutions to client specifications, increasing user engagement by 15%, and improving site usability.  
-Configured and optimized DNS settings via Cloudflare, strengthening security protocols, accelerating load times by 20%, and ensuring reliable domain performance.  
-Updated and secured WordPress core, plugins, and themes across 15 sites, reducing vulnerabilities by 30% and maintaining compatibility with the latest standards.  
-Integrated and maintained an Angular application within the WordPress ecosystem, developing reusable Angular components that enhanced functionality and improved front-end performance by 10%.  
-Implemented jQuery solutions to create dynamic front-end interactions, streamlining user workflows and enhancing interactivity across the WordPress platform.  
-Built and maintained API integrations, modifying the WordPress REST API and a Propel-based API, ensuring 99% data accuracy and enabling seamless interoperability between systems.  
-Responded to customer requests by developing new features, fixing bugs, and onboarding 5+ new clients, achieving a 95% satisfaction rate and driving platform improvements. 
 
+Resolved 50+ monthly customer support tickets using Jira, troubleshooting API, frontend, and backend issues, improving retention by 20%.
+Integrated DataDog monitoring across 5 AWS production servers, reducing downtime by 30% with real-time CPU, storage, and network tracking.
+Developed automated regression test suite with TestCafe, cutting release testing time by 40% and validating 10+ monthly deployments.
+Executed functional, manual, and performance testing with JMeter and Tricentis, optimizing scalability for 1,000+ simultaneous users.
+Enhanced CI/CD pipeline with automated API testing using JetBrains HTTP client, reducing deployment defects by 25%.
+Monitored server health and database metrics for 5 production environments via SSH, maintaining 99.9% uptime.
+Collaborated with teams to fix 30+ quarterly bugs, using Jira and cross-browser testing on Chrome, Firefox, and Safari.
+Improved application quality by debugging API requests and implementing agile testing plans.
 Technical Support Engineer
 App Academy, Remote, US
 May 2020 - July 2023
@@ -40,6 +45,7 @@ August 2012 - May 2020
 Taught 6 sections of chemistry to 150+ students annually.
 Developed and implemented yearly science curriculum.
 Fostered a classroom environment for high-level learning.
+
 
 `
 
@@ -90,7 +96,7 @@ function sendResume(name, email) {
     }
   ];
 
-    const pdfPath = path.join(__dirname, "Drew-Griffin-Resume-Wordpress-Developer.pdf"); // Path to the PDF file
+    const pdfPath = path.join(__dirname, "Copy-Drew-Griffin-Resume.pdf"); // Path to the PDF file
     const pdfData = fs.readFileSync(pdfPath); // Read the PDF file
     const pdfBase64 = pdfData.toString("base64"); // Convert to Base64
   client
@@ -102,7 +108,7 @@ function sendResume(name, email) {
           attachments: [
               {
                   content: pdfBase64, // Base64-encoded PDF file
-                  filename: "Drew-Griffin-Resume-Wordpress-Developer.pdf",
+                  filename: "Copy-Drew-Griffin-Resume.pdf",
                   type: "application/pdf",
                   disposition: "attachment",
               },
